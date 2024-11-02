@@ -56,7 +56,7 @@ body {
   margin-left: 5px;
 }
 
-@media (max-width: 1550px) {
+@media (max-width: 1551px) {
   .navbar{
     justify-content: space-between;
   }
