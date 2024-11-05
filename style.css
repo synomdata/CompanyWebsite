@@ -19,13 +19,56 @@ body {
   position: fixed;
   top: -100px; /* Initially place it above the viewport */
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
   animation: slideDown 1s ease forwards;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.navbar a {
+  font-size: 16px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.navbar .nav-options:focus,
+.navbar .nav-options:hover {
+  color: #407f68;
+}
+
+.navbar .nav-options:focus:after,
+.navbar .nav-options:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.navbar .nav-options:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #FB908D;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+.logo a{
+  /* font-family: "Space Grotesk", sans-serif; */
+  font-family: "League Spartan", sans-serif;
+  text-decoration: none;
+  font-size: 28px; 
+  font-weight: 700;
+  margin-left: 1.5rem;
   color: #000;
 }
 
@@ -33,94 +76,172 @@ body {
   display: flex;
   gap: 20px;
   background-color: #F3F1E6;
-  padding: 8px 20px;
+  padding: 9px 20px;
   border-radius: 20px;
 }
 
 .nav-links a {
+  font-family: "Poppins", serif;
   text-decoration: none;
   color: #000;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
 }
+/* Container for dropdown menu */
+.dropdown {
+  position: relative;
+}
 
-.consultation-button {
-  background-color: #F3F1E6;
-  padding: 8px 15px;
+/* Industries link styling */
+.dropdown-toggle {
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 150%; /* Adjust this value as desired */
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  min-width: 150px;
+  transform-origin: top;
+  transform: scaleY(0); /* Initial collapsed state */
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s; /* Visibility delay */
+  z-index: 10;
+  opacity: 0; /* Start with opacity 0 */
+  visibility: hidden; /* Hide from view initially */
+}
+
+/* Links inside dropdown */
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show dropdown on hover or focus-within on the dropdown container */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  transform: scaleY(1); /* Expand vertically */
+  opacity: 1; /* Make visible */
+  visibility: visible; /* Allow interaction */
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s; /* Remove delay on hover */
+}
+
+
+
+/* Button styling */
+.consultation-button button {
+  padding: 8px 20px;
+  border: unset;
   border-radius: 20px;
-  font-size: 16px;
+  color: #212121;
+  z-index: 1;
+  background: #f3f1e6;
+  position: relative;
+  font-family: "Poppins", serif;
+  font-size: 14px;
   font-weight: 500;
   display: flex;
   align-items: center;
-  color: #000;
+  transition: all 250ms;
+  overflow: hidden;
   cursor: pointer;
 }
 
-.phone-icon {
-  font-size: 18px;
-  margin-left: 5px;
-}
-
-/* Sidebar styling */
-.sidebar {
-  position: fixed;
+.consultation-button button::before {
+  content: "";
+  position: absolute;
   top: 0;
-  right: -250px;
-  width: 250px;
-  height: 100vh;
-  background-color: #f1f1e7;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 20px;
+  background-color: #212121;
+  z-index: -1;
+  transition: all 250ms;
+}
+
+.consultation-button button:hover {
+  color: #fff;
+}
+
+.consultation-button button:hover::before {
+  width: 100%;
+}
+
+/* Tooltip icon styling */
+.tooltip-icon {
+  position: relative;
+  margin-left: 5px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: right 0.3s ease;
-  z-index: 999;
+  align-items: center; /* Center the icon vertically */
 }
 
-.sidebar a {
-  padding: 15px 0;
-  font-size: 18px;
-  color: #000;
-  text-decoration: none;
-  font-weight: 500;
+.tooltip-icon svg {
+  height: 20px;
+  width: 20px;
+  line-height: 1; /* Remove any extra space below */
+  vertical-align: middle; /* Align the icon to the middle */
 }
 
-/* Active sidebar style to slide it in */
-.sidebar-active {
-  right: 0;
+/* Hide tooltip text */
+.tooltip-icon span {
+  display: none;
 }
 
-/* Hamburger styling */
+@keyframes slideDown {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
 .hamburger {
   display: none;
   cursor: pointer;
-  position: absolute;
-  right: 30px; /* Position the hamburger at the right */
-  z-index: 1001; /* Ensure it appears above other elements */
+  z-index: 1000;
+}
+
+.hamburger input {
+  display: none;
 }
 
 .hamburger svg {
-  height: 3em;
+  /* The size of the SVG defines the overall size */
+  height: 2.1em;
+  /* Define the transition for transforming the SVG */
   transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .line {
   fill: none;
-  stroke: black;
+  stroke: #2b2b2b;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 3;
+  stroke-width: 2.5;
+  /* Define the transition for transforming the Stroke */
   transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
               stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .line-top-bottom {
   stroke-dasharray: 12 63;
-}
-
-/* Original Hamburger Animation */
-.hamburger input {
-  display: none;
 }
 
 .hamburger input:checked + svg {
@@ -132,29 +253,111 @@ body {
   stroke-dashoffset: -32.42;
 }
 
+/* Sidebar Styling */
+.sidebar {
+  position: fixed;
+  font-family: "Poppins", serif;
+  top: 0;
+  right: -50%;
+  width: 50%;
+  height: 100%;
+  background-color: #F3F1E6;
+  color: white;
+  transition: right 0.4s ease;
+  padding-top: 60px;
+  box-shadow: 0px 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none; /* Hide sidebar by default */
+}
 
-@keyframes slideDown {
-  0% {
-    top: -100px;
+#menu-toggle:checked ~ .sidebar {
+  display: block; /* Show sidebar when hamburger is checked */
+}
+
+.sidebar nav a,
+.accordion-toggle {
+  font-family: "Poppins", serif;
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.1s, font-weight 0.1s;
+}
+
+.sidebar nav a:hover,
+.accordion-toggle:hover,
+.sidebar nav a:focus,
+.accordion-toggle:focus {
+  color: black;
+  background-color: #ddd;
+  font-weight: bold; /* Bold on hover or focus */
+}
+
+/* Accordion Styling */
+.accordion {
+  padding: 0;
+  border: none;
+}
+
+.accordion-toggle {
+  font-family: "Poppins", serif;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px;
+  outline: none;
+}
+
+.accordion-content {
+  display: none;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.accordion-content a {
+  font-size: 12px;
+  color: white;
+  padding: 8px 0;
+  transition: color 0.3s;
+}
+
+.accordion-content a:hover {
+  color: #ddd;
+}
+
+@media (max-width: 940px) {
+  .sidebar {
+    display: block;
   }
-  100% {
-    top: 0;
+  .logo a{
+    margin-left: 0rem;
+  }
+  .nav-links,
+  .consultation-button {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
   }
 }
+
+/* Show sidebar only on smaller screens */
+@media (min-width: 940px) {
+  #menu-toggle:checked ~ .sidebar {
+    display: none;
+  }
+}
+
 
 @media (max-width: 1551px) {
   .navbar{
     justify-content: space-between;
-  }
-}
-
-/* Responsive styling */
-@media (max-width: 910px) {
-  .nav-links, .consultation-button {
-    display: none;
-  }
-  
-  .hamburger {
-    display: block;
   }
 }
