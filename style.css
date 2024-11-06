@@ -346,6 +346,12 @@ body {
   .hamburger {
     display: block;
   }
+
+  /* .navbar{
+    backdrop-filter: blur(10px) saturate(100%);
+    -webkit-backdrop-filter: blur(30px) saturate(100%);
+    background-color: rgba(0, 0, 0, 0);
+  } */
 }
 
 /* Show sidebar only on smaller screens */
@@ -359,5 +365,250 @@ body {
 @media (max-width: 1551px) {
   .navbar{
     justify-content: space-between;
+  }
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 4rem;
+  background-color: #FFFEF9;
+  font-family: Arial, sans-serif;
+}
+
+.hero-content {
+  font-family: "Poppins", sans-serif;
+  max-width: 95%;
+  margin-bottom: 50px;
+  margin-left: 2.5rem;
+}
+
+.hero-content h2 {
+  font-size: 70px;
+  font-weight: 600;
+  color: #000;
+  z-index: 10;
+  line-height: 1.2em;
+}
+
+.hero-content h2 span {
+  color: #ffb000;
+}
+
+.hero-content h2 span:hover {
+  -webkit-text-stroke-color: #ffb000;
+  stroke: #ffb000;
+  -webkit-text-stroke-width: 1px;
+  stroke-width: 1px;
+  filter: drop-shadow(0 0 7px #ffb000);
+  color: #FFFEF9;
+}
+
+.hero-content .spinner-circle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+.hero-content .spinner-circle .paragraph-button{
+  display: flex;
+  flex-direction: column;
+}
+.rotate-image {
+    /* Initial properties */
+    /* width: 150px; Adjust as needed */
+    /* height: auto; */
+
+    /* Animation properties */
+    animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-container {
+  position: relative;
+  display: inline-block;
+  opacity: 0; /* Initially hidden */
+  animation: appear 1s ease-out forwards, drop 0.8s ease-out 0.7s forwards;
+}
+
+.path-background {
+  position: absolute;
+  top: -120px; /* Starts above the spinner */
+  left: -5px;
+  height: 290px; /* Adjust based on the desired drop length */
+  width: 170px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), #F3F1E6); /* Gradient path */
+  box-shadow: 0px 0px 20px 8px rgba(0, 0, 0, 0.1);
+  z-index: 0;
+  opacity: 0;
+  border-bottom-left-radius: 100px; /* Adjust the radius as desired */
+  border-bottom-right-radius: 100px;
+  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.1));
+  animation: pathReveal 1s ease-out forwards;
+}
+
+/* Path reveal effect */
+@keyframes pathReveal {
+  0% {
+      opacity: 0;
+      transform: translateY(-100px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  top: 34%;
+  left: 35%;
+  border-radius: 50%;
+  border: 2px solid #444;
+  box-shadow: -10px -10px 10px #6359f8, 0px -10px 10px 0px #9c32e2, 10px -10px 10px #f36896, 10px 0 10px #ff0b0b, 10px 10px 10px 0px#ff5500, 0 10px 10px 0px #ff9500, -10px 10px 10px 0px #ffb700;
+  animation: rot55 1.5s linear infinite;
+}
+
+.spinnerin {
+  border: 2px solid #444;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rot55 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes appear {
+  0% {
+      opacity: 0;
+      transform: translateY(-90px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(-90px);
+  }
+}
+
+@keyframes drop {
+  0% {
+      transform: translateY(-90px); /* Start 80px above */
+  }
+  100% {
+      transform: translateY(0); /* End at original position */
+  }
+}
+
+.hero-content p {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1em;
+  color: #666;
+  margin: 20px 0;
+}
+
+.cssbuttons-io-button {
+  background: black;
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #1b1b1b;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  max-width: fit-content;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #1b1b1b;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #FFC422;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon{
+  background: #FFC422;
+  transform: scale(0.95);
+}
+.cssbuttons-io-button:active .icon svg{
+  color: black;
+}
+
+
+/* Hero Image */
+.hero-image {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+}
+.hero-image img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .hero-content {
+      max-width: 100%;
+  }
+
+  .hero-image img {
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
   }
 }
