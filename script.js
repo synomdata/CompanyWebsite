@@ -36,3 +36,25 @@ document.getElementById("logo").addEventListener("click", function (event) {
     window.location.href = "/";
   }
 });
+
+document.getElementById("contactButton").addEventListener("click", function() {
+  // Define the recipient email address
+  const email = "socialmedia@synomdata.com"; // Replace with the desired recipient email address
+
+  // Gmail URL with only the recipient email
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+
+  // Open Gmail compose page in a new tab
+  window.open(gmailUrl, "_blank");
+});
+
+document.getElementById("getConsultation").addEventListener("click", function() {
+  // Define the recipient email address
+  const email = "socialmedia@synomdata.com"; // Replace with the desired recipient email address
+
+  // Gmail URL with only the recipient email
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+
+  // Open Gmail compose page in a new tab
+  window.open(gmailUrl, "_blank");
+});
