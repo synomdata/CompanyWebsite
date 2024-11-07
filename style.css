@@ -702,6 +702,7 @@ body {
   max-width: 35rem;
   margin-left: 1.5rem;
   margin-right: 2.5rem;
+  border-radius: 30px;
   height: auto;
 }
 
