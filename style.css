@@ -389,6 +389,8 @@ body {
   padding-top: 4rem;
   background-color: #FFFEF9;
   font-family: Arial, sans-serif;
+  max-width: 1560px; /* Limit maximum width */
+  margin: 0 auto;
 }
 
 .hero-content {
@@ -631,11 +633,125 @@ body {
   }
 }
 
+@media (max-width: 1498px) {
+  .hero-content h2{
+    font-size: 60px;
+  }
+  .path-background{
+    left: 44.9rem;
+    height: 270px; 
+  }
+  @keyframes pathReveal {
+    0% {
+        opacity: 0;
+        /* transform: translateY(-100px); */
+        height: 0;
+    }
+    100% {
+        opacity: 1;
+        /* transform: translateY(0); */
+        height: 270px;
+    }
+  }
+  @keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-80px);
+    }
+  }
+  @keyframes drop {
+    0% {
+        transform: translateY(-80px); /* Start 80px above */
+    }
+    100% {
+        transform: translateY(0); /* End at original position */
+    }
+  }
+}
+
+@media (max-width: 1340px) {
+  .hero-content h2{
+    font-size: 50px;
+  }
+  .path-background{
+    top: 30%;
+    left: 35.5rem;
+    height: 250px; 
+  }
+  @keyframes pathReveal {
+    0% {
+        opacity: 0;
+        /* transform: translateY(-100px); */
+        height: 0;
+    }
+    100% {
+        opacity: 1;
+        /* transform: translateY(0); */
+        height: 250px;
+    }
+  }
+  @keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-60px);
+    }
+  }
+  @keyframes drop {
+    0% {
+        transform: translateY(-60px); /* Start 80px above */
+    }
+    100% {
+        transform: translateY(0); /* End at original position */
+    }
+  }
+}
+
+@media (max-width: 1190px) {
+  .hero-section {
+    flex-direction: column;
+    padding-top: 6rem;
+  }
+
+  /* Optional: Adjust inner content for better alignment in column view */
+  .hero-content {
+    max-width: 100%;
+    margin-left: 0; /* Reset left margin for centered alignment */
+  }
+  
+
+  .hero-image {
+    background-image: url('assets/city1.jpg');
+    margin-top: -30px;
+    position: relative;
+    width: 100%;        /* Full width of the container */
+    height: 400px;       /* Adjust height as desired, e.g., 60vh for a rectangular look */
+    overflow: hidden;   /* Hide any excess image beyond the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: 50% 40%;
+  }
+  .hero-image img{
+    display: none;
+  }
+}
+
 /* General styling for the About section */
 .about-section {
   display: flex;
   flex-direction: column;
   padding: 60px 100px 60px 185px ;
+   max-width: 1560px; /* Limit maximum width */
+  margin: 0 auto;
 }
 
 .about-button {
