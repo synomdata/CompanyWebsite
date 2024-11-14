@@ -58,3 +58,4 @@ document.getElementById("getConsultation").addEventListener("click", function() 
   // Open Gmail compose page in a new tab
   window.open(gmailUrl, "_blank");
 });
+
